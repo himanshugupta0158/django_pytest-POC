@@ -27,12 +27,33 @@ def test_set_check_username2(user_2):
 
 '''
 
-def test_new_user(new_user):
-    print(new_user.first_name)
-    assert new_user.first_name == "Myname" , "first_name does not match"
+# def test_new_user(new_user):
+#     print(new_user.first_name)
+#     assert new_user.first_name == "Myname" , "first_name does not match"
 
 
-def test_new_staff_user(new_staff_user):
-    print(new_staff_user.is_staff)
-    assert new_staff_user.is_staff
+# def test_new_staff_user(new_staff_user):
+#     print(new_staff_user.is_staff)
+#     assert new_staff_user.is_staff
+
+# testing using factory 
+'''
+@pytest.mark.django_db
+def test_new_build_user(user_factory):
+    user = user_factory.build()
+    count = User.objects.all().count()
+    print(count)
+    print(user.username)
+    assert True
+
+
+@pytest.mark.django_db
+def test_new_create_user(user_factory):
+    user = user_factory.create()
+    count = User.objects.all().count()
+    print(count)
+    print(user.username)
+    assert True 
+
+'''
 

@@ -1,6 +1,13 @@
 import pytest
 from django.contrib.auth.models import User
 
+# for registering factory
+from pytest_factoryboy import register
+from tests.factories import UserFactory , ProductFactory , CategoryFactory
+
+
+'''
+
 @pytest.fixture()
 def user_2(db):
     user = User.objects.create_user("test-user")
@@ -43,4 +50,30 @@ def new_user(db , new_user_factory):
 @pytest.fixture
 def new_staff_user(db , new_user_factory):
     return new_user_factory("Test_user" , "password" , "Myname" , is_staff=True)
+
+'''
+
+
+
+# registering factory
+register(UserFactory)
+register(ProductFactory)
+register(CategoryFactory)
+
+@pytest.fixture
+def build_newuser(db, user_factory):
+    user = user_factory.build()
+    return user
+
+
+
+@pytest.fixture
+def create_newuser(db, user_factory):
+    user = user_factory.create()
+    return user
+
+
+
+
+
 
