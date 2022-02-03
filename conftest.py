@@ -5,6 +5,11 @@ from django.contrib.auth.models import User
 from pytest_factoryboy import register
 from tests.factories import UserFactory , ProductFactory , CategoryFactory
 
+# seleniumm webdriver
+from selenium import webdriver
+# django server test case
+from django.test import LiveServerTestCase
+
 
 '''
 
@@ -72,6 +77,16 @@ def create_newuser(db, user_factory):
     user = user_factory.create()
     return user
 
+# fixture for Chrome
+@pytest.fixture(scope="class")
+def chrome_driver_init(request):
+    
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    chrome_driver = webdriver.Chrome(executable_path=r"./chromedriver" , options=options)
+    request.cls.driver = chrome_driver
+    yield
+    chrome_driver.close()    
 
 
 
