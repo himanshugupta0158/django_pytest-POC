@@ -1,2 +1,12 @@
 pytest.ini -> pytest configuration file 
 conftest.py -> this is pytest fixtures folder.
+In pytest.ini :
+DJANGO_SETTINGS_MODULE : define django settings.py path
+python_files : to define test case/function/class/file format.
+python_classes : define test classes 
+python_function : define test functions.
+NOTE : after defining classes and functions ,we dont need to 
+write them in specific format.
+filterwarnings -> for filtering out or irgnoring warnings
+markers -> To register custom markers
+

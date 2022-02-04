@@ -78,15 +78,16 @@ def create_newuser(db, user_factory):
     return user
 
 # fixture for Chrome
-@pytest.fixture(scope="class")
-def chrome_driver_init(request):
+
+# @pytest.fixture(scope="class")
+# def chrome_driver_init(request):
     
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    chrome_driver = webdriver.Chrome(executable_path=r"./chromedriver" , options=options)
-    request.cls.driver = chrome_driver
-    yield
-    chrome_driver.close()    
+#     options = webdriver.ChromeOptions()
+#     options.add_argument("--headless")
+#     chrome_driver = webdriver.Chrome(executable_path=r"./chromedriver" , options=options)
+#     request.cls.driver = chrome_driver
+#     yield
+#     chrome_driver.close()    
 
 
 

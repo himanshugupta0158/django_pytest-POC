@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<H2>Categories : </H2><br>
+{% for category in category_list %}
+{{category.name}}
+<hr>
+{% endfor %}
+
+
+
+{% endblock content %}

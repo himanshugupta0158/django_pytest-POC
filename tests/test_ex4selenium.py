@@ -48,23 +48,27 @@ from selenium import webdriver
 #         self.driver.get(("%s%s" % (self.live_server_url, "/admin/")))
 #         assert "Log in | Django site admin" in self.driver.title
 
-@pytest.fixture(params=["chrome" , "firefox"] , scope="class")
-def driver_init(request):
-    if request.param == "chrome":
-        web_driver = webdriver.Chrome(executable_path=r"./chromedriver")
+
+# using both Chrome and firefox webdriver
+
+# @pytest.fixture(params=["chrome" , "firefox"] , scope="class")
+# def driver_init(request):
+#     if request.param == "chrome":
+#         web_driver = webdriver.Chrome(executable_path=r"./chromedriver")
     
-    # you need firefox webdriver -> geckodriver and firefox browser
-    if request.param == "firefox" :
-        web_driver = webdriver.Firefox(executable_path=r"./geckodriver")
-    request.cls.driver = web_driver 
-    yield
-    web_driver.close()
+#     # you need firefox webdriver -> geckodriver and firefox browser
+#     if request.param == "firefox" :
+#         web_driver = webdriver.Firefox(executable_path=r"./geckodriver")
+#     request.cls.driver = web_driver 
+#     yield
+#     web_driver.close()
 
 
-@pytest.mark.usefixtures("driver_init")
-class Test_URL_Chrome:
-    def test_open_url(self , live_server):
-        self.driver.get(("%s%s" %(live_server.url , "/admin/")))
-        assert "Log in | Django site admin" in self.driver.title 
-        
+# @pytest.mark.usefixtures("driver_init")
+# class Test_URL_Chrome:
+#     def test_open_url(self , live_server):
+#         self.driver.get(("%s%s" %(live_server.url , "/admin/")))
+#         assert "Log in | Django site admin" in self.driver.title 
+
+
 
